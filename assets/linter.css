@@ -1,0 +1,44 @@
+textarea {
+	width: 100%;
+	min-height: 400px; 
+}
+
+.input {
+	display: inline-block;
+	width: 40%;
+	height: 100%;
+}
+
+.notes {
+	float: right;
+	display: inline-block;
+	width: 45%;
+	height: 100%;
+	padding-right: 5%;
+}
+
+.paragraph {
+	padding-top: 0;
+	margin: 0;
+	padding-bottom: 1em;
+}
+
+.block {
+	display: inline-block;
+}
+
+.active {
+	color: black;
+}
+
+.passive {
+	color: red;
+}
+
+.likely-active {
+	color: green;
+}
+
+.likely-passive {
+	color: darkorange;
+}
