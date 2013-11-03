@@ -11,9 +11,10 @@ var clean = function(arr) {
 };
 
 var app = angular.module('subeditor', ['ngStorage']);
+
 app.controller('LinterController', function($scope, $localStorage) {
   $scope.$storage = $localStorage.$default({
-    rawtext: "A well named function should do what it says. An anonymous function makes no such promise. When new behaviour comes it can be easily slipped into an anonymous function and everything still ‘makes sense’. I prefer to see it as: anonymous functions make it easier to avoid the pain of naming a function. 'I can just use an anonymous function here'. The pain gets deferred to the person who later has to read and understand the function."
+    rawtext: "A well named function should do what it says. An anonymous function makes no such promise. When new behaviour comes it can be easily slipped into an anonymous function and everything still 'makes sense'. I prefer to see it as: anonymous functions make it easier to avoid the pain of naming a function. \"I can just use an anonymous function here\". The pain gets deferred to the person who later has to read and understand the function."
   });
 
   $scope.paragraphs = function() {
