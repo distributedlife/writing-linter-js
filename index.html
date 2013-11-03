@@ -1,7 +1,6 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="subeditor">
   <head>
-
     <script src="lib/underscore.js"></script>
 
     <script src="lib/jspos/lexicon.js_"></script>
@@ -14,15 +13,17 @@
     <script src="src/sentence_voice.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="lib/ngStorage.js"></script>
 
     <script src="src/linter.js"></script>
+
     <link rel="stylesheet" href="assets/linter.css">
   </head>
   <body>
     <h2>Voice Detection</h2>
     <div ng-controller="LinterController">
       <div class="input">
-        <textarea ng-model="rawtext" placeholder="It was a dark and stormy night."></textarea>
+        <textarea ng-model="$storage.rawtext" placeholder="It was a dark and stormy night."></textarea>
       </div>
       <div class="notes">
         <p class="paragraph" ng-repeat="paragraph in paragraphs()">

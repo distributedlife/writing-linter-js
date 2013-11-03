@@ -10,14 +10,15 @@ var clean = function(arr) {
   return arr;
 };
 
-var app = angular.module('subeditor', []);
-
-var LinterController = function($scope, $http) {
-  $scope.rawtext = "The quick brown fox jumps over the lazy dog. The time has come for all good men to attend the dance.\n\nTo swell the gourd, and plump the hazel shells."
+var app = angular.module('subeditor', ['ngStorage']);
+app.controller('LinterController', function($scope, $localStorage) {
+  $scope.$storage = $localStorage.$default({
+    rawtext: "A well named function should do what it says. An anonymous function makes no such promise. When new behaviour comes it can be easily slipped into an anonymous function and everything still ‘makes sense’. I prefer to see it as: anonymous functions make it easier to avoid the pain of naming a function. 'I can just use an anonymous function here'. The pain gets deferred to the person who later has to read and understand the function."
+  });
 
   $scope.paragraphs = function() {
-    return $scope.rawtext.split("\n\n")
-  }
+    return $scope.$storage.rawtext.split("\n\n")
+  };
 
   $scope.sentences = function(paragraph) {
     var sentences = clean(paragraph.trim().split("."));
@@ -30,13 +31,11 @@ var LinterController = function($scope, $http) {
     })
 
     return sentences;
-  }
+  };
 
   $scope.voice = function(sentence) {
     var sentence_voice = new SentenceVoice(new Reference(), new TaggedWordAnalyser(new Reference()), new WordAnalyser(new Reference()));
 
     return sentence_voice.get_voice(sentence);
-  }
-};
-
-LinterController.inject = ['$scope', '$http']
+  };
+});
