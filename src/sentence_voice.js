@@ -14,21 +14,27 @@ function SentenceVoice(reference, tagged_word_analyser, word_analyser) {
 		}).length > 0);
 	};
 
-	var check_is_then_by_pattern = function(sentence) {
-        if (sentence.indexOf("by") != -1) {
+	var check_is_then_by_pattern = function(words, sentence) {
+        if (contains(words, "by")) {
             return 'passive';
         } else {
             return 'likely-active';
         }
 	};
 
+	var contains = function(arr, item) {
+		return (_.filter(arr, function(e) { return e === item}).length > 0);
+	}
+
 	sentence_voice.get_voice = function(sentence) {
 		var words = new Lexer().lex(sentence);
 		var taggedWords = new POSTagger().tag(words);
 
         if (looks_passive(taggedWords)) {
-            if (sentence.indexOf("is") != -1) {
-                return check_is_then_by_pattern(sentence)
+        	var words = _.map(taggedWords, function(taggedWord) { return taggedWord[0]; });
+        	
+            if (contains(words, "is")) {
+                return check_is_then_by_pattern(words, sentence)
             }
 
             return 'passive';
