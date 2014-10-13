@@ -14,7 +14,7 @@ describe("sentence voice behaviour", function() {
     expect(sentence_voice.get_voice("The Grand Canyon is viewed by thousands of tourists every year")).toBe('passive');
     expect(sentence_voice.get_voice("The savannah is roamed by beautiful giraffes")).toBe('passive');
     expect(sentence_voice.get_voice("There is a considerable range of expertise demonstrated by the spam senders")).toBe('passive');
-    expect(sentence_voice.get_voice("The staff is required to watch a safety video every year")).toBe('likely-active');
+    expect(sentence_voice.get_voice("The staff is required to watch a safety video every year")).toBe('active');
     expect(sentence_voice.get_voice("A movie is going to be watched by us tonight")).toBe('passive');
     expect(sentence_voice.get_voice("A safety video will be watched by the staff every year")).toBe('passive');
     expect(sentence_voice.get_voice("A scathing review was written by the critic")).toBe('passive');

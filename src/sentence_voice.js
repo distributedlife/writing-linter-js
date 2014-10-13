@@ -18,7 +18,7 @@ function SentenceVoice(reference, tagged_word_analyser, word_analyser) {
         if (sentence.indexOf("by") != -1) {
             return 'passive';
         } else {
-            return 'likely-active';
+            return 'active';
         }
 	};
 
@@ -40,6 +40,34 @@ function SentenceVoice(reference, tagged_word_analyser, word_analyser) {
                 
         return 'active';
 	};
+
+	sentence_voice.get_reason = function(sentence) {
+		var reasons = [];
+		var taggedWords = new POSTagger().tag(new Lexer().lex(sentence));
+
+		var words = _.map(taggedWords, function(taggedWord) { return taggedWord[0]; });
+		var tags = _.map(taggedWords, function(taggedWord) { return taggedWord[1]; });
+
+		if (word_analyser.contains_auxiliary_verb(words)) {
+			reasons.push("Contains the auxiliary verb: " + word_analyser.get_auxiliary_verbs(words).join(", "));
+		}
+		if (tagged_word_analyser.has_past_tense_verb(tags)) {
+			var past_tense_verbs = _.filter(taggedWords, function(taggedWord) {
+				if (_.contains(tagged_word_analyser.get_past_tense_verbs(tags), taggedWord[1])) {
+					return taggedWord[0];	
+				}
+			});
+			past_tense_verbs = _.map(past_tense_verbs, function(past_tense_verb) { return past_tense_verb[0] });
+
+			reasons.push("Contains the past tense verb: " + past_tense_verbs.join(", "));
+		}
+		
+		// var contains_magic_phrases = _.filter(reference.likely_passive_phrases(), function(phrase) {
+		// 	return (sentence.toLowerCase().indexOf(phrase) != -1);
+		// }).join(", ");
+
+		return reasons;
+	}
 
 	return sentence_voice;
 };

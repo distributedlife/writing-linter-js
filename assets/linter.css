@@ -23,8 +23,8 @@ textarea {
 	padding-bottom: 1em;
 }
 
-.block {
-	display: inline-block;
+.legend {
+	float: left;
 }
 
 .active {

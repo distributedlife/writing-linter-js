@@ -32,14 +32,21 @@
           </span>
         </p>
       </div>
+      <div class="legend">
+        <p class="active">Sentences in black are active sentences</p>
+        <p class="likely-active">Sentences in green are probably active sentences</p>
+        <p class="likely-passive">Sentences in orange are probably passive sentences</p>
+        <p class="passive">Sentences in red are passive sentences</p>
+      </div>
+      <div class="notes">
+        <h3>Notes</h3>
+        <p class="paragraph" ng-repeat="note in $storage.notes">
+          <!-- <span>{{note.sentence}}</span> -->
+          <!-- <span>{{note.reason}}</span> -->
+        </p>
+      </div>
     </div>
-    <div>
-      <p class="active">Sentences in black are active sentences</p>
-      <p class="likely-active">Sentences in green are probably active sentences</p>
-      <p class="likely-passive">Sentences in orange are probably passive sentences</p>
-      <p class="passive">Sentences in red are passive sentences</p>
-    </div>
-    <script>
+    <!--script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -48,6 +55,6 @@
       ga('create', 'UA-6423107-6', 'writing-linter.s3-website-us-east-1.amazonaws.com');
       ga('send', 'pageview');
 
-    </script>
+    </script-->
   </body>
 </html>
