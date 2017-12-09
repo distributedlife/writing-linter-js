@@ -2,7 +2,7 @@
 
 var clean = function(arr) {
   for (var i = 0; i < arr.length; i++) {
-    if (arr[i] == "") {         
+    if (arr[i] == "") {
       arr.splice(i, 1);
       i--;
     }
@@ -34,9 +34,30 @@ app.controller('LinterController', function($scope, $localStorage) {
     return sentences;
   };
 
+  $scope.sentence_to_words = function(sentence) {
+    var words = clean(sentence.trim().split(" "));
+
+    // words = _.map(words, function(word) {
+    //   if (sentence.indexOf(word, sentence.length - word.length) !== -1) {
+    //     return word;
+    //   }
+    //   return word + ".";
+    // });
+
+    return words;
+  }
+
   $scope.voice = function(sentence) {
     var sentence_voice = new SentenceVoice(new Reference(), new TaggedWordAnalyser(new Reference()), new WordAnalyser(new Reference()));
 
     return sentence_voice.get_voice(sentence);
   };
+
+  $scope.validate_word = function(word) {
+    if (word.toLowerCase() === "obviously") {
+      return "avoid";
+    } else {
+      return "ok";
+    }
+  }
 });

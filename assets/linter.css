@@ -1,20 +1,28 @@
+body {
+	font-size: 16px;
+}
+
 textarea {
 	width: 100%;
-	min-height: 400px; 
+	min-height: 400px;
+
+	font-size: 16px;
 }
 
 .input {
+	border: 1px dashed blue;
+
 	display: inline-block;
 	width: 40%;
 	height: 100%;
 }
 
 .notes {
+	border: 1px dashed green;
 	float: right;
 	display: inline-block;
 	width: 45%;
 	height: 100%;
-	padding-right: 5%;
 }
 
 .paragraph {
@@ -42,3 +50,11 @@ textarea {
 .likely-passive {
 	color: darkorange;
 }
+
+.avoid {
+	color: red;
+}
+
+span:hover {
+	background-color: #ddd;
+};

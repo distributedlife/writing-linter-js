@@ -15,6 +15,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     <script src="lib/ngStorage.js"></script>
 
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="jquery-plugins/jquery-textrange.js"></script>
+
     <script src="src/linter.js"></script>
 
     <link rel="stylesheet" href="assets/linter.css">
@@ -28,7 +31,11 @@
       <div class="notes">
         <p class="paragraph" ng-repeat="paragraph in paragraphs()">
           <span ng-repeat="sentence in sentences(paragraph)">
-            <span class="{{voice(sentence)}}"> {{sentence}} </span>
+            <span class="{{voice(sentence)}}">
+              <span class="{{validate_word(word)}}" ng-repeat="word in sentence_to_words(sentence)">
+                {{word}}
+              </span>
+            </span>
           </span>
         </p>
       </div>
@@ -41,8 +48,8 @@
       <div class="notes">
         <h3>Notes</h3>
         <p class="paragraph" ng-repeat="note in $storage.notes">
-          <!-- <span>{{note.sentence}}</span> -->
-          <!-- <span>{{note.reason}}</span> -->
+          <span>{{note.sentence}}</span>
+          <span>{{note.reason}}</span>
         </p>
       </div>
     </div>

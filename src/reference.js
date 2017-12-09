@@ -11,8 +11,8 @@ function Reference() {
 
 	reference.auxiliary_verbs = function() {
 	    return [
-	    	"be", "am", "are", "is", "was", "were", "being", "can", "could", 
-	    	"dare", "does", "did", "has", "had", "having", "may", "might", 
+	    	"be", "am", "are", "is", "was", "were", "being", "can", "could",
+	    	"dare", "does", "did", "has", "had", "having", "may", "might",
 	    	"must", "need", "ought", "shall", "should", "will", "would", "got"
 	    	];
 	};
